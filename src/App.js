@@ -21,17 +21,27 @@ class App extends React.Component {
 
     componentDidMount() {
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-
             if (userAuth) {
-                const userRef = createUserProfileDocument(userAuth);
+                // This is function makes a remote endpoint call, so therefore it needs
+                // `await` 👇
+                const userRef = await createUserProfileDocument(userAuth);
 
-                (await userRef).onSnapshot(snapShot => {
-                    console.log(snapShot);
+                // This "subscribes" to any changes so we can update the App accordingly
+                // for example, things like cart changes, etc
+                userRef.onSnapshot(snapShot => {
+                    this.setState({
+                        currentUser: {
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        }
+                    }, () => {
+                        console.log(this.state);
+                    });
                 })
             }
-
-
-            // console.log(user)
+            else {
+                this.setState({currentUser: userAuth}) //equivalent to null
+            }
         });
     }
 
