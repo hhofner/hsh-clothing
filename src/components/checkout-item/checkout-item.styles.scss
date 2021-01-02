@@ -17,7 +17,15 @@
     }
   }
   .name,
-  .quantity,
+  .quantity{
+    .arrow {
+      cursor: pointer;
+    }
+    .value {
+      margin: 0 10px;
+    }
+    display: flex;
+  }
   .price {
     width: 23%;
   }

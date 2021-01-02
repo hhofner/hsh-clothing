@@ -15,5 +15,10 @@ export const clearItemFromCart = item => ({
     type: CartActionTypes.CLEAR_ITEM_FROM_CART,
     payload: item
 })
+
+export const removeItem = item => ({
+    type: CartActionTypes.REMOVE_ITEM,
+    payload: item
+})
 // Remember (!) An "action" is just an object with a `type`, and a `payload`.
 // And an action creator is a method that will make an action for you.
