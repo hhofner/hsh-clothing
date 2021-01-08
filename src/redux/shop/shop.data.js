@@ -282,5 +282,5 @@ const SHOP_DATA = {
     ]
   }
 };
-
+console.log("This is shop data:", SHOP_DATA)
 export default SHOP_DATA;
