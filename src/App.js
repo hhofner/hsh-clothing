@@ -20,12 +20,12 @@ class App extends React.Component {
     unsubscribeFromAuth = null
 
     componentDidMount() {
-        const {setCurrentUser} = this.props;
+        const { setCurrentUser } = this.props;
 
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
                 // This is function makes a remote endpoint call, so therefore it needs
-                // `await` 👇
+                // `await`
                 const userRef = await createUserProfileDocument(userAuth);
 
                 // This "subscribes" to any changes so we can update the App accordingly
@@ -64,7 +64,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser
+    currentUser: selectCurrentUser,
 })
 
 const mapDispatchToProps = dispatch => ({

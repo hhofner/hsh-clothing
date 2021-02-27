@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CustomButtom from "../custom-button/custom-buttom.component";
+import CustomButton from "../custom-button/custom-buttom.component";
 import CartItem from "../cart-item/cart-item.component";
 import './cart-dropdown.styles.scss';
 
@@ -25,12 +25,12 @@ const CartDropdown = ({ cartItems, history, dispatch}) => (
             }
 
         </div>
-        <CustomButtom onClick={() => {
+        <CustomButton onClick={() => {
             history.push('/checkout')
             dispatch(toggleCartHidden())
         }}>
             GO TO CHECKOUT
-        </CustomButtom>
+        </CustomButton>
     </div>
 )
 

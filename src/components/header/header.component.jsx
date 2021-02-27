@@ -15,30 +15,32 @@ import { createStructuredSelector } from 'reselect';
 
 import './header.styles.scss';
 
+import {HeaderContainer, LogoContainer, OptionsContainer, OptionDiv, OptionLink} from "./header.styles";
+
 const Header = ({currentUser, hidden}) => (
-    <div className="header">
-        <Link to="/" className="logo-container">
+    <HeaderContainer>
+        <LogoContainer to="/">
             <Logo className="logo"/>
-        </Link>
-        <div className="options">
-            <Link className="option" to="/shop">
+        </LogoContainer>
+        <OptionsContainer>
+            <OptionLink to="/shop">
                 SHOP
-            </Link>
-            <Link className="options" to={"/shop"}>
+            </OptionLink>
+            <OptionLink to={"/shop"}>
                 CONTACT
-            </Link>
+            </OptionLink>
             {
                 currentUser ?
-                    <div className="options" onClick={() => auth.signOut()}>SIGN OUT</div>
+                    <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
                     :
-                    <Link className="options" to="/signin">SIGN IN</Link>
+                    <OptionLink to="/signin">SIGN IN</OptionLink>
             }
             <CartIcon/>
-        </div>
+        </OptionsContainer>
         {hidden ? null :
             <CartDropdown/>
         }
-    </div>
+    </HeaderContainer>
 )
 
 const mapStateToProps = createStructuredSelector({
