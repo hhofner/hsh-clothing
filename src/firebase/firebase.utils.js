@@ -48,6 +48,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 }
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    // This method was to be called once when transferring all the data to
+    // firebase
     const collectionRef = firestore.collection(collectionKey);
 
     const batch = firestore.batch();
